@@ -1,8 +1,11 @@
 const express = require('express');
 const path = require('path');
+const { title } = require('process');
 const app = express();
 //we use this to serve html files instead of app.get method for /help and / page
 const publicDirectoryPath = path.join(__dirname, '../public')
+
+app.set('view engine', 'hbs');
 app.use(express.static(publicDirectoryPath));
 
 //app.com
@@ -26,8 +29,14 @@ app.get('/about', (req, res) => {
     }]);
 })
 //app.com/weather
+// app.get('/weather', (req, res) => {
+//     res.send('Weather Page');
+// })
 app.get('/weather', (req, res) => {
-    res.send('Weather Page');
+    res.render('index', {
+        title: 'Weather Page',
+        description: 'This page is render using the HBS'
+    })
 })
 
 app.listen(3000, () => {

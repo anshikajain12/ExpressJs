@@ -4,4 +4,9 @@ h1{
 img{
     width: 250px;
     height: 250px;
+    cursor: pointer;
+}
+img:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
 }
